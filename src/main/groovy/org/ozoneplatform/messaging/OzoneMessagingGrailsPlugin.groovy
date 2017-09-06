@@ -16,12 +16,14 @@
 
 package org.ozoneplatform.messaging
 
+import grails.plugins.*
+
 import org.ozoneplatform.messaging.service.XmppAgent
 import org.ozoneplatform.messaging.service.XmppListenerAgent
 import org.ozoneplatform.messaging.service.impl.XmppConfigurationService
 import org.ozoneplatform.messaging.service.impl.XmppMessageService
 
-class OzoneMessagingGrailsPlugin {
+class OzoneMessagingGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.3.0 > *"

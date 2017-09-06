@@ -36,7 +36,7 @@ dependencies {
     compile group: 'org.igniterealtime.smack', name: 'smack', version: smackVersion
     compile group: 'org.igniterealtime.smack', name: 'smackx', version: smackVersion
 
-    // Default Gradle dependencies
+    // Default Grails dependencies
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion
     compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion
     compile group: 'org.grails', name: 'grails-core', version: grailsVersion
