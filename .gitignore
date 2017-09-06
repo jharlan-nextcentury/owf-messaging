@@ -1,12 +1,28 @@
-/.classpath
-/.project
-/.settings
-/lib
-/target
-/target-eclipse
-plugin.xml
-*.iml
-*.log
-*.sha1
-*.zip
-.idea
+### Gradle
+.gradle/
+build/
+
+
+### JetBrains (IntelliJ)
+.idea/
+
+## Plugin-specific files:
+
+# IntelliJ
+out/
+
+
+### Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+
+
+### Mac OS
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+._*

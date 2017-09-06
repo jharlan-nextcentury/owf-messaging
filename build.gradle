@@ -1,0 +1,77 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+    }
+}
+
+version '1.19.1-SNAPSHOT'
+group 'org.ozoneplatform'
+
+apply plugin: 'maven'
+
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'org.grails.grails-plugin'
+apply plugin: 'org.grails.grails-plugin-publish'
+
+ext {
+    grailsVersion = '3.3.0'
+    springBootVersion = '1.5.4.RELEASE'
+
+    smackVersion = '3.3.1'
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'https://repo.grails.org/grails/core' }
+    maven { url 'https://maven.atlassian.com/3rdparty' }
+}
+
+
+dependencies {
+    compile group: 'org.igniterealtime.smack', name: 'smack', version: smackVersion
+    compile group: 'org.igniterealtime.smack', name: 'smackx', version: smackVersion
+
+    // Default Gradle dependencies
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion
+    compile group: 'org.grails', name: 'grails-core', version: grailsVersion
+
+    console group: 'org.grails', name: 'grails-console', version: grailsVersion
+
+    profile group: 'org.grails.profiles', name: 'plugin', version: '3.2.2'
+
+    provided group: 'org.grails', name: 'grails-plugin-services', version: grailsVersion
+    provided group: 'org.grails', name: 'grails-plugin-domain-class', version: grailsVersion
+
+    testCompile group: 'org.grails', name: 'grails-gorm-testing-support', version: '1.0.0'
+    testCompile group: 'org.grails', name: 'grails-plugin-testing', version: grailsVersion
+}
+
+// Skip integration tests during build/assemble phase
+check.dependsOn -= integrationTest
+
+bootRun {
+    jvmArgs('-Dspring.output.ansi.enabled=always')
+    addResources = true
+}
+
+// enable if you wish to package this plugin as a standalone application
+bootRepackage.enabled = false
+grailsPublish {
+    // TODO: Provide values here
+    user = 'user'
+    key = 'key'
+    githubSlug = 'foo/bar'
+    license {
+        name = 'Apache-2.0'
+    }
+    title = 'My Plugin'
+    desc = 'Full plugin description'
+    developers = [johndoe:'John Doe']
+}
+
